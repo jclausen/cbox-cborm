@@ -12,12 +12,12 @@ lucee5:
     - .:/var/www
   #link our mysql container
   links:
-    - db
-db:
+    - mysql
+mysql:
   image: mysql
   ports:
     - "3306:3306"
   environment:
-    MYSQL_ALLOW_EMPTY_PASSWORD: yes
-    MYSQL_USER: rooot
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_USER: 'root'
     MYSQL_DATABASE: coolblog
