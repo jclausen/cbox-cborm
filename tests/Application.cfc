@@ -22,10 +22,10 @@ component{
 	this.mappings[ "/cbvalidation" ]   	= rootPath & "/modules/cbvalidation";
 
 	// Datasource definitions For Standalone mode/travis mode.
-	if( directoryExists( "/home/travis" ) ){
+	if( directoryExists( "/home/travis" ) || directoryExists( "/var/www" ) ){
 		this.datasources[ "coolblog" ] = {
 			  class 			: 'org.gjt.mm.mysql.Driver',
-			  connectionString	: 'jdbc:mysql://localhost:3306/coolblog?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&',
+			  connectionString	: 'jdbc:mysql://localhost:3306/coolblog?user=root&useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&',
 			  username			: 'root'
 		};
 	}

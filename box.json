@@ -6,10 +6,10 @@
     "defaultPort":0,
     "dependencies":{
         "cbvalidation":"1.1.0+00012",
-        "coldbox":"4.1.0+00002"
+        "coldbox":"4.2.0+00002"
     },
     "devDependencies":{
-        "testbox":"2.2.0"
+        "testbox":"2.3.0+00044"
     },
     "installPaths":{
         "cbvalidation":"modules/cbvalidation",
