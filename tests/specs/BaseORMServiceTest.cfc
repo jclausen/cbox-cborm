@@ -512,6 +512,7 @@
 	function testFind(){
 
 		test = ormservice.findit("from Category where category = ?",['Training']);
+		assertFalse( isNull( test ) );
 		assertEquals( 'Training', test.getCategory() );
 
 		test = ormservice.findit("from Category where category = :category",{category="Training"});
