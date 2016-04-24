@@ -34,13 +34,8 @@ before_script:
   - curl http://localhost:49616/
   - curl http://localhost:8085/
 
-script: >
-  ant -f workbench/build.xml;
-  export exitCode=$?;
-  if [ $exitCode == 1 ]; then
-    curl http://localhost:49616/tests/runner.cfm?reporter=text -o /tmp/output.txt;
-    cat /tmp/output.txt;
-  fi;
+script: 
+  - ant -f workbench/build.xml
 
 after_script:
   - docker-compose stop
