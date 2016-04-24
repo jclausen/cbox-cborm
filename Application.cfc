@@ -23,17 +23,18 @@ component{
 	this.mappings[ "/cborm" ] 	= COLDBOX_APP_ROOT_PATH & "modules/cborm";
 	this.mappings[ "/root" ] 	= COLDBOX_APP_ROOT_PATH;
 
-	// Datasource definitions For Standalone mode/travis mode.
-	if( directoryExists( "/home/travis" ) ){
-		this.datasources[ "coolblog" ] = {
-			  class 			: 'org.gjt.mm.mysql.Driver',
-			  connectionString	: 'jdbc:mysql://localhost:3306/coolblog?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&',
-			  username			: 'root'
-		};
-	} else if( directoryExists( "/var/www" ) ){
+	// Datasource definitions for Docker engine containers.
+	if( directoryExists( "/var/www" ) ){
 		this.datasources[ "coolblog" ] = {
 			  class 			: 'org.gjt.mm.mysql.Driver',
 			  connectionString	: 'jdbc:mysql://mysqldb:3306/coolblog?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&',
+			  username			: 'root'
+		};
+	// Datasource definitions For Standalone mode/travis mode.
+	} else if( directoryExists( "/home/travis" ) ){
+		this.datasources[ "coolblog" ] = {
+			  class 			: 'org.gjt.mm.mysql.Driver',
+			  connectionString	: 'jdbc:mysql://localhost:3306/coolblog?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&',
 			  username			: 'root'
 		};
 	}
