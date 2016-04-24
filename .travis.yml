@@ -25,12 +25,13 @@ before_install:
     /etc/apt/sources.list.d/commandbox.list
 
 install:
-  - sudo apt-get update && sudo apt-get --assume-yes install commandbox
-  - box install
-  - box server start
   # Docker CFML Engine Tests
   - docker-compose build
   - docker-compose up -d
+  # CommandBox install
+  - sudo apt-get update && sudo apt-get --assume-yes install commandbox
+  - box install
+  - box server start
 
 before_script:
   # Startup the app
