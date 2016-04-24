@@ -31,7 +31,7 @@ install:
 
 before_script:
   # import database
-  - mysql -h localhost -u root < tests/resources/coolblog.sql
+  - mysql -h 127.0.0.1 -u root < tests/resources/coolblog.sql
   # Startup the app
   - curl http://localhost:49616/
   - curl http://localhost:8085/

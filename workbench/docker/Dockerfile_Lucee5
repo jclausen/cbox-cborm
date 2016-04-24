@@ -1,4 +1,5 @@
 FROM tomcat:8-jre8
+
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
@@ -28,5 +29,4 @@ COPY Lucee5/lucee-web.xml.cfm /opt/lucee/web/lucee-web.xml.cfm
 
 EXPOSE 8088
 
-CMD ["mkdir","/var/www/tests/results/lucee5"]
 CMD ["catalina.sh", "run"]
