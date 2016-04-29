@@ -169,6 +169,13 @@
           	<fileset dir="tests" includes="test.xml"/>
     		<property name="environment" value="${environment}" />
         </subant>
+
+        <!-- ACF11 -->
+        <property name="test.targetACF11" value="runACF11" />
+		<subant target="${test.targetACF11}">
+          	<fileset dir="tests" includes="test.xml"/>
+    		<property name="environment" value="${environment}" />
+        </subant>
     </target>
     
     <!-- Get Dependencies -->

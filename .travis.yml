@@ -11,6 +11,12 @@ dist: trusty
 
 sudo: required
 
+addons:
+  apt:
+    packages:
+    - mysql-client-core-5.6
+    - mysql-client-5.6
+
 env:
   COMPOSE_VERSION: 1.5.2
 
@@ -19,6 +25,10 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  # Download and install Docker libs
+  - curl -L https://github.com/Ortus-Solutions/docker-buildfiles/archive/master.zip > docker.zip
+  - unzip docker.zip -d workbench
+  - mv workbench/docker-buildfiles-master workbench/docker
   # CommandBox Keys
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
   - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a
@@ -34,9 +44,12 @@ install:
   - box server start
 
 before_script:
-  # Startup the app
+  # Create our test database once our containers are up and online
+  - mysql -h 127.0.0.1 -u root < workbench/docker/MySQL/coolblog.sql
+  # Perform health checks on our CFML engines
   - curl http://localhost:49616/
   - curl http://localhost:8085/
+  - curl http://localhost:8081/
 
 script: 
   - ant -f workbench/build.xml
