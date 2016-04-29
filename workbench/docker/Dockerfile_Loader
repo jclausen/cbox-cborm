@@ -1,4 +1,0 @@
-FROM mysql
-
-COPY MySQL/coolblog.sql /
-CMD "mysql -h mysqldb -uroot < /coolblog.sql"
