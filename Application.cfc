@@ -23,7 +23,7 @@ component{
 	this.mappings[ "/cborm" ] 	= COLDBOX_APP_ROOT_PATH & "modules/cborm";
 	this.mappings[ "/root" ] 	= COLDBOX_APP_ROOT_PATH;
 
-	// Datasource definitions for Docker engine containers.
+	// Datasource definitions for Docker Lucee containers.
 	if( directoryExists( "/var/www" ) ){
 		this.datasources[ "coolblog" ] = {
 			  class 			: 'org.gjt.mm.mysql.Driver',
